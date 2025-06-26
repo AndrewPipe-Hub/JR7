@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Suplementos | JR7</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f5f6fa;
+            --snd-bg-color: #ffffff;
+            --accent-bg: #1f618d;
+            --accent-alt: #0e6655;
+            --text-color: #2c3e50;
+            --text-light: #7f8c8d;
+            --btn-text: #ffffff;
+            --hover-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--accent-bg);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .countdown {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-alt);
+            background: var(--snd-bg-color);
+            padding: 1.5rem 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 20px var(--hover-shadow);
+        }
+
+        .label {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>¡Nuestra tienda se está preparando!</h1>
+    <p>Muy pronto lanzaremos nuestra tienda de ropa y suplementos. Prepárate para transformar tu cuerpo con lo mejor.
+    </p>
+    <div class="countdown" id="countdown">Cargando...</div>
+    <div class="label">Tiempo restante para la apertura</div>
+
+    <script>
+        const countdownEl = document.getElementById("countdown");
+        const FOUR_WEEKS_MS = 4 * 7 * 24 * 60 * 60 * 1000;
+
+        let startTime = localStorage.getItem("storeLaunchStart");
+
+        if (!startTime) {
+            startTime = new Date().getTime();
+            localStorage.setItem("storeLaunchStart", startTime);
+        } else {
+            startTime = parseInt(startTime);
+        }
+
+        const endTime = startTime + FOUR_WEEKS_MS;
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const remaining = endTime - now;
+
+            if (remaining <= 0) {
+                countdownEl.textContent = "¡Ya estamos abiertos!";
+                return;
+            }
+
+            const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+            countdownEl.textContent =
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+
+</html>
