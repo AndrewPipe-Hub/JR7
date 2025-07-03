@@ -1,3 +1,14 @@
+//LOADER
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const loader = document.querySelector('.loader-container');
+        loader.style.opacity = '0';
+        loader.style.visibility = 'hidden';
+        setTimeout(() => loader.remove(), 500); // lo remueve del DOM
+    }, 4000); // espera 4 segundos
+});
+
+
 //Boton de menu para navegación en pantallas pequeñas
 const menuIcon = document.querySelector('#menu-icon');
 const navbar = document.querySelector('.navbar');

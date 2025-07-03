@@ -36,6 +36,140 @@ body {
 }
 
 
+/*LOADER*/
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--accent-bg);
+  /* Usa tu color principal */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Animaciones */
+@keyframes loadingBar {
+
+  0%,
+  100% {
+    width: 0%;
+  }
+
+  30% {
+    width: 33%;
+  }
+
+  60% {
+    width: 66%;
+  }
+
+  90% {
+    width: 100%;
+  }
+}
+
+@keyframes checkScale1 {
+
+  0%,
+  28% {
+    transform: scale(0.75);
+    background-color: var(--accent-alt);
+  }
+
+  29%,
+  100% {
+    transform: scale(1);
+    background-color: #00cd00;
+  }
+}
+
+@keyframes checkScale2 {
+
+  0%,
+  58% {
+    transform: scale(0.75);
+    background-color: var(--accent-alt);
+  }
+
+  59%,
+  100% {
+    transform: scale(1);
+    background-color: #00cd00;
+  }
+}
+
+@keyframes checkScale3 {
+
+  0%,
+  88% {
+    transform: scale(0.75);
+    background-color: var(--accent-alt);
+  }
+
+  89%,
+  100% {
+    transform: scale(1);
+    background-color: #00cd00;
+  }
+}
+
+.loader {
+  position: relative;
+  background-color: var(--accent-alt);
+  border-radius: 1em;
+  height: 1em;
+  width: 330px;
+}
+
+.bar {
+  position: relative;
+  background-color: #00cd00;
+  width: 40px;
+  height: 100%;
+  border-radius: 1em;
+  animation: loadingBar 4s linear forwards;
+}
+
+.check-bar-container {
+  position: absolute;
+  left: 0px;
+  top: -4px;
+  z-index: 69;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 0.5em;
+}
+
+.check {
+  border-radius: 1em;
+  height: 1.5em;
+  width: 1.5em;
+  padding: 3px;
+  background-color: var(--accent-alt);
+  transform: scale(0.75);
+}
+
+.check-bar-container .check:nth-of-type(2) {
+  animation: checkScale1 4s linear forwards;
+}
+
+.check-bar-container .check:nth-of-type(3) {
+  animation: checkScale2 4s linear forwards;
+}
+
+.check-bar-container .check:nth-of-type(4) {
+  animation: checkScale3 4s linear forwards;
+  transform-origin: right;
+}
+
+
+
 /* ===== HEADER AJUSTADO ===== */
 .header {
   position: fixed;
