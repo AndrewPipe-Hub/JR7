@@ -44,7 +44,6 @@ body {
   width: 100%;
   height: 100vh;
   background: var(--accent-bg);
-  /* Usa tu color principal */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,13 +186,24 @@ body {
   z-index: 1000;
 }
 
-.logo-img {
-  width: 160px;
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
+
+.logo-img {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
 
 .navbar {
   display: flex;
   gap: 2.5rem;
+  align-items: center;
 }
 
 .navbar a {
@@ -394,6 +404,97 @@ body {
   object-fit: contain;
   filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
 }
+
+
+
+a.btn-learn-more {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  width: 14rem;
+  height: auto;
+}
+
+a.btn-learn-more .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  margin-left: 0.5rem;
+  background: var(--accent-bg);
+  border-radius: 1.625rem;
+  box-shadow: 0 4px 8px var(--hover-shadow);
+}
+
+a.btn-learn-more .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+a.btn-learn-more .circle .icon.arrow {
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+
+a.btn-learn-more .circle .icon.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid var(--btn-text);
+
+  border-right: 0.125rem solid var(--btn-text);
+  transform: rotate(45deg);
+}
+
+a.btn-learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0 0.75rem 3.5rem;
+  color: var(--accent-bg);
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+a.btn-learn-more:hover .circle {
+  width: 100%;
+  background: var(--accent-alt);
+}
+
+a.btn-learn-more:hover .circle .icon.arrow {
+  background: var(--btn-text);
+  transform: translate(1rem, 0);
+}
+
+a.btn-learn-more:hover .button-text {
+  color: var(--btn-text);
+}
+
+
+
 
 
 
